@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block navbar-right %}
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="/blog">Blog<span class="sr-only">(current)</span></a></li>
+    <li><a href="#">Sign up</a></li>
+    <li><a href="/blog/admin">Login in</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9" id="blog">
+                <h1>BEAR's blog</h1>
+<!-- ============================== blog ============================== --> 
+                {% for post in posts %}
+                <article>
+                    <h2><a href="#">{{ post.title }}</a></h2>
+                    <div class="row">
+                        <div class="group1 col-sm-6 col-md-6">
+                            <span class="glyphicon glyphicon-folder-open"></span>  <a href="#">C++</a>
+                            <span class="glyphicon glyphicon-bookmark"></span> <a href="#">Python</a>, <a href="#">C++</a>, <a href="#">Python</a>
+                        </div>
+                        <div class="group2 col-sm-6 col-md-6">
+                            <span class="glyphicon glyphicon-pencil"></span> <a href="#">Comments</a>                             
+                            <span class="glyphicon glyphicon-time"></span> <a href="#">Published: {{ post.published_date }}</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="lead">{{ post.text|linebreaks }}</p>
+                    <hr>
+                </article>
+                {% endfor %}
+<!-- ============================== siderbar ============================== --> 
+            </div>
+            <div class="col-md-3" id="sidebar">
+                <div class="panel panel-default"> 
+                    <div class="panel-heading"> 
+                        <h4 class="panel-title">Latest Posts</h4> 
+                    </div>
+                    <ul class="list-group">
+                    {% for post in posts %}
+                    <li class="list-group-item"><a href="#">{{ post.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Categories</h4>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="#">C++</a></li>
+                        <li class="list-group-item"><a href="#">Python</a></li>
+                        <li class="list-group-item"><a href="#">C++</a></li>
+                        <li class="list-group-item"><a href="#">Python</a></li>
+                        <li class="list-group-item"><a href="#">C++</a></li>
+                        <li class="list-group-item"><a href="#">Python</a></li>
+                    </ul>
+                </div>
+            </div>
+<!-- ============================== siderbar ============================== --> 
+        </div><!-- row -->
+    </div><!-- container-fluid -->
+
+{% endblock %}

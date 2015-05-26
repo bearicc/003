@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mysite',
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,7 +92,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -110,14 +111,14 @@ STATICFILES_DIRS = (
 STATIC_ROOT = 'staticfiles'
 
 # heroku
-import dj_database_url
-
-DATABASES['default'] = dj_database_url.config()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-ALLOWED_HOSTS = ['*']
-DEBUG = False
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# import dj_database_url
+#
+# DATABASES['default'] = dj_database_url.config()
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# ALLOWED_HOSTS = ['*']
+# DEBUG = False
+#
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
