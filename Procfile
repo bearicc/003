@@ -1,1 +1,1 @@
-web: gunicorn bearicc.wsgi --log-file -
+web: gunicorn mysite.wsgi
